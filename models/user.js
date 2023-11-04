@@ -16,9 +16,13 @@ const schema = new mongoose.Schema({
         type: String,
         unique: false
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
+    yearOFstudy:{
+        type: String,
+        unique: false
+    },
+    foi:{
+        type:Array,
+        unique:false
     }
 })
 

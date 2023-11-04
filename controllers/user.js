@@ -26,9 +26,20 @@ export const login = async (req, res, next) => {
     }
 }
 
+// {
+//     "name": "Krishna Kesarwani",
+//     "email": "kk321@gmail.com",
+//     "password": "kk",
+//     "yearOFstudy": "3",
+//     "foi": {
+//         "1":"mech",
+//         "2":"design",
+//         "3": "coding"
+//     }
+// }
 export const register = async (req, res) => {
     try {
-        const { name, email, password } = req.body
+        const { name, email, password, yearOFstudy, foi } = req.body
         let user = await User.findOne({ email })
 
         if (user) {
@@ -36,7 +47,7 @@ export const register = async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10)
-        user = await User.create({ name, email, password: hashedPassword })
+        user = await User.create({ name, email, password: hashedPassword, yearOFstudy, foi })
 
         sendCookie(user, res, "Registered Successfully...", 201)
     } catch (error) {
@@ -54,7 +65,7 @@ export const register = async (req, res) => {
 //     })
 // }
 
-export const getmyprofile = (req, res, next) => {
+export const getmyprofile = (req, res) => {
     res.status(200).json({
         success: true,
         user: req.user,
@@ -84,4 +95,8 @@ export const logout = (req, res) => {
             success: true,
             user: req.user,
         })
+}
+
+export const addnewfoi =(req,res)=>{
+
 }

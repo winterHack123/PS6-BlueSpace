@@ -1,5 +1,6 @@
 import ErrorHandler from "../middlewares/error.js"
 import { Task } from "../models/task.js"
+import { User } from "../models/user.js"
 
 
 
@@ -32,6 +33,18 @@ export const getmyTask = async (req, res, next) => {
     } catch (error) {
         next(error)
     }
+}
+
+export const pairing = async(req,res,next)=>{
+    // try {
+    //     const getData = async () => {
+    //         const res = await fetch(User);
+    //         const data = await res.json();
+    //         return data
+    //     }
+    // } catch (error) {
+        
+    // }
 }
 
 export const updatemyTask = async (req, res, next) => {
