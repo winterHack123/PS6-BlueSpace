@@ -1,5 +1,6 @@
 .body-mod{
     margin-left: 30px;
+    height: 100vh;
 }
 
 .cust-colr-1{
@@ -10,8 +11,20 @@
     color: orange;
 }
 
+.scrollable-container {
+    overflow-y: auto; /* Enable vertical scroll when content overflows */
+}
+
 .imp-btn-1{
     display: inline;
     background-color: white;
     border: none;
+}
+
+.cust-dp-1{
+    display: flex;
+}
+
+.blk{
+    pointer-events: none;
 }

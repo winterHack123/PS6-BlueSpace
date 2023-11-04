@@ -95,10 +95,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="styles/sidebars.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/schedule.css">
+    <link rel="stylesheet" href="styles/profile.css">
 </head>
 
-<body>
+<body onload="myFunction()">
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
         <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
             aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (light)">
@@ -240,58 +240,170 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 body-mod scrollable-container">
-                    <div class="col-sm-12 cust-placement-1">
-                        <h1 class="display-6 fw-bold text-body-emphasis">Scheduled Meetings</h1>
-                        <hr>
+                <div class="col-sm-9 body-mod scrollable-container">
+                    <h1 class="text-body-emphasis mt-5">Profile</h1>
+                    <div class="col-md-7 col-lg-8">
+                        <div>
+                            <div class="row g-3">
+
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Name </label>
+                                    <input type="text" class="form-control" id="inp1">
+                                </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email </label>
+                                    <input type="email" class="form-control" id="inp2">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="state" class="form-label">Major</label>
+                                    <select class="form-select" id="inp3" required="">
+                                        <option value="">Choose...</option>
+                                        <option>CSE</option>
+                                        <option>ECE</option>
+                                        <option>EEE</option>
+                                        <option>CVE</option>
+                                        <option>MCE</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="state" class="form-label">Year of Study</label>
+                                    <select class="form-select" id="inp4" required="">
+                                        <option value="">Choose...</option>
+                                        <option>1st Year</option>
+                                        <option>2nd Year</option>
+                                        <option>3rd Year</option>
+                                        <option>4th Year</option>
+                                    </select>
+                                </div>
+
+                                <div class="d-flex gap-2 justify-content-start col-md-12" id="span-container">
+                                </div>
+                                <div class="mb-2 cust-dp-1">
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" id="tag-input"
+                                            placeholder="Enter a tag">
+                                    </div>
+                                    <button onclick="addSpan()" class="imp-btn-1" id="inp5"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path
+                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                        </svg></button>
+                                    <button onclick="sendData()"></button>
+
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
-                </div>
-                <div class="container ms-3 me-3">
-                    <div class="row mb-3 text-center">
-                        <div class="col-4 themed-grid-col">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Meet@ 2nd October</h5>
-                                    <h5 class="card-title">7:50 AM with usernm</h5>
-                                    <p class="card-text">C++ , C, Python</p>
-                                    <h5>Resources:</h5>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4 themed-grid-col">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4 themed-grid-col">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <script>
+        function myFunction() {
+            const inp1 = document.getElementById("inp1");
+            const inp2 = document.getElementById("inp2");
+            const inp3 = document.getElementById("inp3");
+            const inp4 = document.getElementById("inp4");
+            const inp5 = document.getElementById("inp5");
+            const tag_input = document.getElementById("tag-input")
+            inp1.value = "<%- name %>"
+            inp2.value = "<%- email %>"
+            inp3.value = "<%- major %>"
+            inp4.value = "<%- yos %>";
 
+        }
+        function sendData() {
+            const inp1 = document.getElementById("inp1");
+            console.log("a");
+            console.log(inp1);
+            console.log(inp1.value);
+            const inp2 = document.getElementById("inp2");
+            const inp3 = document.getElementById("inp3");
+            const inp4 = document.getElementById("inp4");
+            const inp5 = document.getElementById("inp5");
+            const tag_input = document.getElementById("tag-input")
+            collectValues();
+            let obj = {
+                uname: inp1.value,
+                uemail: inp2.value,
+                umajor: inp3.value,
+                uyear: inp4.value,
+                ulist: tag_list
+            }
+            console.log(obj);
+            fetch('/receive-object', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(obj),
+            })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data); // Response from the server
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+        let spanCounter = 0; // To maintain unique IDs for span elements
+        let tag_list = [];
+        function addSpan() {
+            const spanContainer = document.getElementById('span-container');
+
+            // Create a new span element with a unique ID
+            const newSpan = document.createElement('span');
+            const spanId = `span-${spanCounter}`;
+            newSpan.id = spanId;
+            newSpan.classList.add("badge", "d-flex", "p-2", "align-items-center", "text-primary-emphasis", "bg-primary-subtle", "border", "border-primary-subtle", "rounded-pill");
+            const newElement = document.createElement('span');
+            newElement.textContent = document.getElementById("tag-input").value;
+            newElement.classList.add('px-1');
+            newSpan.appendChild(newElement);
+
+            // Create a delete button for the span
+            const deleteButton = document.createElement('a');
+            deleteButton.innerHTML += "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x' viewBox='0 0 16 16'> <path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z' /></svg>";
+            deleteButton.href = "#";
+            deleteButton.onclick = function () {
+                // Remove the span when the delete button is clicked
+                newSpan.remove();
+            };
+
+            // Append the span and delete button to the container
+            newSpan.appendChild(deleteButton);
+            spanContainer.appendChild(newSpan);
+
+            spanCounter++;
+        }
+
+        function collectValues() {
+            const valuesList = document.getElementById('span-container');
+            tag_list = [];
+            // Get all the span elements and their values
+
+            const spans = document.querySelectorAll('[id^="span-"]');
+            console.log(spans);
+            let i = 0;
+            spans.forEach((span) => {
+                if (i > 0) {
+                    const child = span.firstElementChild;
+                    const spanValue = child.textContent;
+                    console.log(spanValue);
+                    tag_list.push(spanValue);
+                }
+                i++;
+            });
+            console.log(tag_list);
+        }
+    </script>
     <script>
         /* global bootstrap: false */
         (() => {

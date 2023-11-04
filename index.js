@@ -9,20 +9,19 @@ const app = express();
 const port = 3000;
 
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/profile", (req, res) => {
+  res.render("profile.ejs",{name:"Joyal",email:"joy@123",yos:"1st Year",major:"CSE"});
+});
+app.get("/home", (req, res) => {
+  res.render("bt.ejs",{fname:"Joyal",num:1});
+});
+app.get("/schedule", (req, res) => {
   res.render("scheduled.ejs",{});
 });
-app.get("/test", (req, res) => {
-  res.render("bt.ejs",{});
-});
-app.get("/test2", (req, res) => {
-  res.render("bt3.ejs",{});
-});
-app.post("/new_elt",(req,res)=>{
+app.post("/receive-object",(req,res)=>{
   console.log(req.body);
-  res.render("scheduled.ejs",{});
 });
 app.listen(port, () => {
   console.log(`Listening on port http://localhost:${port}/`);

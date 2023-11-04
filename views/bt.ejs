@@ -96,6 +96,43 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="styles/sidebars.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/bt3.css">
+    <style>
+        /* Centered Content at the Top */
+        .top-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Display Block Divs for Text */
+        .block-div {
+            display: block;
+            margin: 20px auto;
+            width: 50%;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+
+        /* Button at the Top Right */
+        .button-container {
+            position: relative;
+            float: right;
+            margin-right: 20px;
+        }
+
+        /* Style for the Button */
+        .custom-button {
+            background-color: #0074d9;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .c-1 {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -189,8 +226,7 @@
     <main class="d-flex flex-nowrap">
 
         <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none"
-                 aria-expanded="false">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none" aria-expanded="false">
                 <img src="images\richard-stachmann-QFcP00eZqVM-unsplash.jpg" alt="" width="50" height="50"
                     class="rounded-circle me-3">
                 <strong style="font-size: 24px;">Joyal Joseph</strong>
@@ -213,7 +249,7 @@
                 </li>
                 <li>
                     <a href="#" class="nav-link text-white">
-                    <img src="images\schedule.png" alt="" width="18" height="18">
+                        <img src="images\schedule.png" alt="" width="18" height="18">
                         Schedule
                     </a>
                 </li>
@@ -222,7 +258,7 @@
                         <svg class="bi pe-none me-2" width="16" height="16">
                             <use xlink:href="#table"></use>
                         </svg>
-                        Planned 
+                        Planned
                     </a>
                 </li>
             </ul>
@@ -244,27 +280,21 @@
                 <div class="col-sm-9 body-mod">
                     <h1 class="text-body-emphasis mt-5">Welcome Back!</h1>
                     <p class="fs-5 col-md-8">Want to try for a new Interview</p>
-                    <div class="d-flex gap-2 justify-content-start mb-3">
-                        <span class="badge d-flex p-2 align-items-center text-bg-primary rounded-pill">
-                            <span class="px-1">Primary</span>
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                              </svg></a>
-                        </span>
-                        <span
-                            class="badge d-flex p-2 align-items-center text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">
-                            <span class="px-1">Primary</span>
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                              </svg></a>
-                        </span>
+                    <div class="d-flex gap-2 justify-content-start mb-3" id="span-container" >
                     </div>
-                    <form>
+                    <div class="mb-2">
+
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter a tag">
+                            <input type="text" class="form-control" id="tag-input" placeholder="Enter a tag">
+                            
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                        <button onclick="addSpan()" class="imp-btn-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                          </svg></button>
+                    </div>
+                    
+                    <button onclick="collectValues()" class="btn btn-primary">Search</button>
                     <p class="fs-5 col-md-8">Trending Tags</p>
                     <div class="d-flex gap-2 justify-content-start mt-1">
                         <span class="badge d-flex p-2 align-items-center text-bg-primary rounded-pill">
@@ -288,22 +318,68 @@
                                 </svg></a>
                         </span>
                     </div>
+
                 </div>
             </div>
         </div>
+        </div>
     </main>
-    
-
     <script>
-        /* global bootstrap: false */
-(() => {
-  'use strict'
-  const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  tooltipTriggerList.forEach(tooltipTriggerEl => {
-    new bootstrap.Tooltip(tooltipTriggerEl)
-  })
-})()
+        let spanCounter = 1; // To maintain unique IDs for span elements
+        let tag_list=[];
+        function addSpan() {
+            console.log("a");
+            const spanContainer = document.getElementById('span-container');
+            
+            // Create a new span element with a unique ID
+            const newSpan = document.createElement('span');
+            const spanId = `span-${spanCounter}`;
+            newSpan.id = spanId;
+            newSpan.classList.add("badge", "d-flex", "p-2", "align-items-center" ,      "text-primary-emphasis", "bg-primary-subtle", "border" ,"border-primary-subtle" ,"rounded-pill");
+            const newElement = document.createElement('span');
+            newElement.textContent=document.getElementById("tag-input").value;
+            newElement.classList.add('px-1');
+            newSpan.appendChild(newElement);
+            
+            // Create a delete button for the span
+            const deleteButton = document.createElement('a');
+            deleteButton.innerHTML += "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x' viewBox='0 0 16 16'> <path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z' /></svg>";
+            deleteButton.href="#";
+            deleteButton.onclick = function () {
+                // Remove the span when the delete button is clicked
+                newSpan.remove();
+            };
+
+            // Append the span and delete button to the container
+            newSpan.appendChild(deleteButton);
+            spanContainer.appendChild(newSpan);
+            console.log("a");
+            spanCounter++;
+            console.log(spanCounter);
+        }
+
+        function collectValues() {
+            const valuesList = document.getElementById('span-container');
+            tag_list=[];
+            // Get all the span elements and their values
+            console.log("a");
+            const spans = document.querySelectorAll('[id^="span-"]');
+            console.log(spans);
+            let i=0;
+            spans.forEach((span) => {
+                if(i>0){
+                    const child=span.firstElementChild;
+                    const spanValue = child.textContent;
+                    console.log(spanValue);
+                    tag_list.push(spanValue);
+                }
+                i++;
+            });
+            console.log(tag_list);
+        }
+
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
