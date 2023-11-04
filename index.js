@@ -1,7 +1,6 @@
 import express from "express";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import bodyParser from "body-parser";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -12,7 +11,7 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.get("/profile", (req, res) => {
-  res.render("profile.ejs",{name:"Joyal",email:"joy@123",yos:"1st Year",major:"CSE"});
+  res.render("profile.ejs",{name:"Alex",email:"joy@123",yos:"1st Year",major:"CSE"});
 });
 app.get("/home", (req, res) => {
   res.render("bt.ejs",{fname:"Joyal",num:1});
