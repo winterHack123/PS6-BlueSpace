@@ -28,3 +28,29 @@
 .blk{
     pointer-events: none;
 }
+
+.to-side{
+    float: right;
+    background-color: white;
+    border: none;
+    display: inline;
+}
+
+.profile-edit{
+    background-color: white;
+    border: none;
+}
+
+.profile-button-pos{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.profile-button-pos2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-deactive{
+    display: none;
+}

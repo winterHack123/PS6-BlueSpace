@@ -10,6 +10,9 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.render("index.ejs",{});
+});
 app.get("/profile", (req, res) => {
   res.render("profile.ejs",{name:"Alex",email:"joy@123",yos:"1st Year",major:"CSE"});
 });
@@ -22,6 +25,19 @@ app.get("/schedule", (req, res) => {
 app.post("/receive-object",(req,res)=>{
   console.log(req.body);
 });
+app.post("/post-query",(req,res)=>{
+  console.log(req.body);
+  const obj=[{name : "Alex",
+    year:"1st Year",
+    major:"CSE",
+    interests:["C++","C"]
+  },{name : "Alex",
+  year:"2nd Year",
+  major:"MCE",
+  interests:["C++","Python"]
+}]
+  res.json(obj);
+})
 app.listen(port, () => {
   console.log(`Listening on port http://localhost:${port}/`);
 });

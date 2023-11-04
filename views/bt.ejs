@@ -280,43 +280,26 @@
                 <div class="col-sm-9 body-mod">
                     <h1 class="text-body-emphasis mt-5">Welcome Back!</h1>
                     <p class="fs-5 col-md-8">Want to try for a new Interview</p>
-                    <div class="d-flex gap-2 justify-content-start mb-3" id="span-container" >
+                    <div class="d-flex gap-2 justify-content-start mb-3" id="span-container">
                     </div>
                     <div class="mb-2">
 
                         <div class="mb-3">
                             <input type="text" class="form-control" id="tag-input" placeholder="Enter a tag">
-                            
+
                         </div>
-                        <button onclick="addSpan()" class="imp-btn-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                          </svg></button>
+                        <button onclick="addSpan()" class="imp-btn-1"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg></button>
                     </div>
-                    
+
                     <button onclick="collectValues()" class="btn btn-primary">Search</button>
-                    <p class="fs-5 col-md-8">Trending Tags</p>
-                    <div class="d-flex gap-2 justify-content-start mt-1">
-                        <span class="badge d-flex p-2 align-items-center text-bg-primary rounded-pill">
-                            <span class="px-1">Primary</span>
-                            <a href="#"><svg class="bi ms-1" width="16" height="16">
-                                    <use xlink:href="#x-circle-fill"></use>
-                                </svg></a>
-                        </span>
-                        <span
-                            class="badge d-flex p-2 align-items-center text-primary-emphasis bg-primary-subtle rounded-pill">
-                            <span class="px-1">Primary</span>
-                            <a href="#"><svg class="bi ms-1" width="16" height="16">
-                                    <use xlink:href="#x-circle-fill"></use>
-                                </svg></a>
-                        </span>
-                        <span
-                            class="badge d-flex p-2 align-items-center text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">
-                            <span class="px-1">Primary</span>
-                            <a href="#"><svg class="bi ms-1" width="16" height="16">
-                                    <use xlink:href="#x-circle-fill"></use>
-                                </svg></a>
-                        </span>
+                    <p class="fs-5 col-md-8">Available Candidates:</p>
+                    <div id="available-list">
+
                     </div>
 
                 </div>
@@ -326,25 +309,25 @@
     </main>
     <script>
         let spanCounter = 1; // To maintain unique IDs for span elements
-        let tag_list=[];
+        let tag_list = [];
         function addSpan() {
             console.log("a");
             const spanContainer = document.getElementById('span-container');
-            
+
             // Create a new span element with a unique ID
             const newSpan = document.createElement('span');
             const spanId = `span-${spanCounter}`;
             newSpan.id = spanId;
-            newSpan.classList.add("badge", "d-flex", "p-2", "align-items-center" ,      "text-primary-emphasis", "bg-primary-subtle", "border" ,"border-primary-subtle" ,"rounded-pill");
+            newSpan.classList.add("badge", "d-flex", "p-2", "align-items-center", "text-primary-emphasis", "bg-primary-subtle", "border", "border-primary-subtle", "rounded-pill");
             const newElement = document.createElement('span');
-            newElement.textContent=document.getElementById("tag-input").value;
+            newElement.textContent = document.getElementById("tag-input").value;
             newElement.classList.add('px-1');
             newSpan.appendChild(newElement);
-            
+
             // Create a delete button for the span
             const deleteButton = document.createElement('a');
             deleteButton.innerHTML += "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x' viewBox='0 0 16 16'> <path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z' /></svg>";
-            deleteButton.href="#";
+            deleteButton.href = "#";
             deleteButton.onclick = function () {
                 // Remove the span when the delete button is clicked
                 newSpan.remove();
@@ -360,15 +343,15 @@
 
         function collectValues() {
             const valuesList = document.getElementById('span-container');
-            tag_list=[];
+            tag_list = [];
             // Get all the span elements and their values
             console.log("a");
             const spans = document.querySelectorAll('[id^="span-"]');
             console.log(spans);
-            let i=0;
+            let i = 0;
             spans.forEach((span) => {
-                if(i>0){
-                    const child=span.firstElementChild;
+                if (i > 0) {
+                    const child = span.firstElementChild;
                     const spanValue = child.textContent;
                     console.log(spanValue);
                     tag_list.push(spanValue);
@@ -376,6 +359,39 @@
                 i++;
             });
             console.log(tag_list);
+            obj = {
+                t_list: tag_list,
+                id: 1,
+            }
+            console.log("Hey");
+            fetch('/post-query', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(obj),
+            })
+                .then((response) => response.json())
+                .then(data => {
+                    console.log(data); // Response from the server
+                    const list=document.getElementById("available-list");
+                    for (const rec of data) {
+                        console.log(rec);
+                        const newElement=document.createElement("div");
+                        newElement.classList.add("col-sm-12");
+                        const newp=document.createElement("p");
+                        newp.textContent+=`Name:${rec.name} Year:${rec.year} Major:${rec.major} Interests:`
+                        for(const intr of rec.interests ){
+                            newp.textContent+=` ${intr}`;
+                        }
+                        newElement.appendChild(newp);
+                        list.appendChild(newElement);
+                    }
+                    
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
 
     </script>
