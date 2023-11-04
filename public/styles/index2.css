@@ -1,0 +1,127 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/*ff6257 orange*/
+/*242742 black*/
+#navbar{
+    background-color: grey;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 25% 75% ;
+}
+
+
+.profile {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 25% 75%;
+
+}
+
+.profile img {
+    border-radius: 50%;
+    max-width: 100%;
+    max-height: 100%;/*IMPORTANT*/
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+.profile h2 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+#header-center p {
+    /*DESCENDENT SELECTOR*/
+    margin: 0px;
+    padding: 0px;
+}
+
+#main {
+    display: grid;
+    grid-template-columns: 10% auto;
+    grid-template-rows: 100vh;
+    height: 100vh;
+}
+
+#header-center {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(6,auto);
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 10px;
+    margin-right: 25%;
+}
+.pd{
+    padding: 10px;
+}
+
+.greet {
+    padding: 10px 0px 10px 0px;
+    font-size: 2rem;
+
+}
+.trending{
+    font-size: 2rem;
+}
+
+form input:focus{
+    border: none;
+}
+
+#quote {
+    color: #dadada;
+    font-size: 1.5rem;
+    padding: 0px 0px 10px 0px;
+}
+
+
+#dateTime {
+    grid-area: 3/1/5/2;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#dateTime>p {
+    width: 50%;
+}
+
+#day {
+    font-weight: bold;
+}
+
+#date {
+    font-size: 4rem;
+    line-height: 0.9;
+    font-weight: bold;
+}
+
+#month {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#add-elt-btn {
+    border: none;
+    background-color: white;
+    color: red;
+    width: 5%;
+    /*Doesnt Work*/
+}
+
+#input-elt {
+    border: none;
+    height: 100%;
+    width: 90%;
+}
+#input-elt:focus{
+    border: 0px;
+
+}
+#add-elt {
+    margin: 10px 0px 0px 10px;
+}
