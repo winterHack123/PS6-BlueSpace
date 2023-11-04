@@ -7,8 +7,9 @@ export const sendCookie = (user, res, message, statusCode = 200) => {
     res.status(statusCode).cookie("token", token, {
         httpOnly: true,
 
-    }).json({
-        success: true,
-        message,
     })
+    //     .json({
+    //         success: true,
+    //         message,
+    //     })
 }

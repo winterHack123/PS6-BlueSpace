@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser"
 import taskRouter from './routes/task.js'
 import { errorMiddlewares } from "./middlewares/error.js"
 import cors from "cors"
-
+import userViewRouter from './routes/userview.js'
 export const app = express()
 
 
@@ -15,7 +15,9 @@ config({
 
 
 // Using Middlewares
-app.use(express.json())
+app.use(express.static("public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 app.use(errorMiddlewares)
 app.use(cors({
@@ -26,6 +28,7 @@ app.use(cors({
 
 // Using routes
 app.use("/ipp/v1/users", userRouter)
+app.use("/users", userViewRouter)
 // app.use("/ipp/v1/tasks", taskRouter)
 
 

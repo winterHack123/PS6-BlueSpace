@@ -1,6 +1,7 @@
 import { User } from "../models/user.js"
 import bcrypt from "bcrypt"
 import { sendCookie } from "../utils/features.js"
+import ErrorHandler from "../middlewares/error.js"
 
 
 
@@ -25,8 +26,9 @@ import { sendCookie } from "../utils/features.js"
 export const login = async (req, res, next) => {
     try {
         const { email, password } = req.body
+        console.log(req.body)
+        // console.log(password)
         let user = await User.findOne({ email }).select("+password")
-
         if (!user) {
             return next(new ErrorHandler("Invalid Email or Password...", 404))
         }
@@ -36,8 +38,9 @@ export const login = async (req, res, next) => {
         if (!isMatch) {
             return next(new ErrorHandler("Invalid Email or Password...", 404))
         }
-
         sendCookie(user, res, `Welcome back, ${user.name}.`, 200)
+        // res.render("../views/profile.ejs",)
+        res.redirect(`/ipp/v1/users/me?email=${email}`)
     } catch (error) {
         next(error)
     }
@@ -45,7 +48,7 @@ export const login = async (req, res, next) => {
 
 
 
-export const register = async (req, res) => {
+export const register = async (req, res, next) => {
     try {
         const { name, email, password, yearOFstudy, foi } = req.body
         let user = await User.findOne({ email })
@@ -66,11 +69,13 @@ export const register = async (req, res) => {
 
 
 
-export const getmyprofile = (req, res) => {
-    res.status(200).json({
-        success: true,
-        user: req.user,
-    })
+export const getmyprofile = async (req, res) => {
+    let user = await User.findOne({ email: req.query.email })
+    res.render("profile.ejs", { name: user.name, email: user.email, yos: user.yearOFstudy });
+    // res.status(200).json({
+    //     success: true,
+    //     user,
+    // })
 }
 
 

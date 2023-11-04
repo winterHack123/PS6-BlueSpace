@@ -1,0 +1,19 @@
+.body-mod{
+    margin-left: 30px;
+}
+
+.cust-colr-1{
+    color: black;
+}
+
+.cust-bg-colr-1{
+    color: orange;
+}
+
+.scrollable-container {
+    overflow-y: auto; /* Enable vertical scroll when content overflows */
+}
+
+.cust-placement-1{
+    text-align: center;
+}
