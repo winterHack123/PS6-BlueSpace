@@ -187,34 +187,31 @@
     </svg>
 
     <main class="d-flex flex-nowrap">
+        <h1 class="visually-hidden">Sidebars examples</h1>
 
         <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none"
-                 aria-expanded="false">
-                <img src="images\richard-stachmann-QFcP00eZqVM-unsplash.jpg" alt="" width="50" height="50"
-                    class="rounded-circle me-3">
-                <strong style="font-size: 24px;">Joyal Joseph</strong>
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi pe-none me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+                <span class="fs-4">Sidebar</span>
             </a>
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
                     <a href="#" class="nav-link active" aria-current="page">
-                        <img src="images\interaction.png" alt="" width="18px" height="18px">
-                        Interview
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-white">
-                        <svg class="bi pe-none me-2" width="18" height="18">
-                            <use xlink:href="#people-circle"></use>
+                        <svg class="bi pe-none me-2" width="16" height="16">
+                            <use xlink:href="#home"></use>
                         </svg>
-                        Profile
+                        Home
                     </a>
                 </li>
                 <li>
                     <a href="#" class="nav-link text-white">
-                    <img src="images\schedule.png" alt="" width="18" height="18">
-                        Schedule
+                        <svg class="bi pe-none me-2" width="16" height="16">
+                            <use xlink:href="#speedometer2"></use>
+                        </svg>
+                        Dashboard
                     </a>
                 </li>
                 <li>
@@ -222,12 +219,33 @@
                         <svg class="bi pe-none me-2" width="16" height="16">
                             <use xlink:href="#table"></use>
                         </svg>
-                        Planned 
+                        Orders
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white">
+                        <svg class="bi pe-none me-2" width="16" height="16">
+                            <use xlink:href="#grid"></use>
+                        </svg>
+                        Products
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white">
+                        <svg class="bi pe-none me-2" width="16" height="16">
+                            <use xlink:href="#people-circle"></use>
+                        </svg>
+                        Customers
                     </a>
                 </li>
             </ul>
             <hr>
             <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="images\richard-stachmann-QFcP00eZqVM-unsplash.jpg" alt="" width="40" height="40" class="rounded-circle me-3">
+                    <strong>Joyal Joseph</strong>
+                </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                     <li><a class="dropdown-item" href="#">New project...</a></li>
                     <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -247,16 +265,23 @@
                     <div class="d-flex gap-2 justify-content-start mb-3">
                         <span class="badge d-flex p-2 align-items-center text-bg-primary rounded-pill">
                             <span class="px-1">Primary</span>
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                              </svg></a>
+                            <a href="#"><svg class="bi ms-1" width="16" height="16">
+                                    <use xlink:href="#x-circle-fill"></use>
+                                </svg></a>
+                        </span>
+                        <span
+                            class="badge d-flex p-2 align-items-center text-primary-emphasis bg-primary-subtle rounded-pill">
+                            <span class="px-1">Primary</span>
+                            <a href="#"><svg class="bi ms-1" width="16" height="16">
+                                    <use xlink:href="#x-circle-fill"></use>
+                                </svg></a>
                         </span>
                         <span
                             class="badge d-flex p-2 align-items-center text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">
                             <span class="px-1">Primary</span>
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                              </svg></a>
+                            <a href="#"><svg class="bi ms-1" width="16" height="16">
+                                    <use xlink:href="#x-circle-fill"></use>
+                                </svg></a>
                         </span>
                     </div>
                     <form>
@@ -294,16 +319,7 @@
     </main>
 
 
-    <script>
-        /* global bootstrap: false */
-(() => {
-  'use strict'
-  const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  tooltipTriggerList.forEach(tooltipTriggerEl => {
-    new bootstrap.Tooltip(tooltipTriggerEl)
-  })
-})()
-    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>

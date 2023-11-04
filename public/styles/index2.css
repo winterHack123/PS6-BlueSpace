@@ -9,28 +9,31 @@
     background-color: grey;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 25% 75% ;
+    grid-template-rows: 10px 50px auto ;
 }
 
-
+.gutter{
+    height: 10px;
+}
 .profile {
     text-align: center;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 25% 75%;
-
+    display: flex;
+    grid-area: 2/1/3/2;
 }
 
 .profile img {
+    min-width: 50px;
+    max-width: 50px;
     border-radius: 50%;
-    max-width: 100%;
-    max-height: 100%;/*IMPORTANT*/
+    height: 50px;
     object-fit: cover;
     margin: 0 auto;
     display: block;
 }
 
 .profile h2 {
+    min-width: 50%;
+    max-width: 50%; 
     margin: 10px 0;
     font-size: 18px;
 }

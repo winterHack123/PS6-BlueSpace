@@ -12,10 +12,13 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/", (req, res) => {
-  res.render("test.ejs",{});
+  res.render("scheduled.ejs",{});
 });
 app.get("/test", (req, res) => {
-  res.render("test2.ejs",{});
+  res.render("bt.ejs",{});
+});
+app.get("/test2", (req, res) => {
+  res.render("bt3.ejs",{});
 });
 app.post("/new_elt",(req,res)=>{
   console.log(req.body);
