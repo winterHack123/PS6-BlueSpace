@@ -5,6 +5,23 @@ import { sendCookie } from "../utils/features.js"
 
 
 
+
+
+// {
+//     "name": "Krishna Kesarwani",
+//     "email": "kk321@gmail.com",
+//     "password": "kk",
+//     "yearOFstudy": "3",
+//     "foi": {
+//         "1":"mech",
+//         "2":"design",
+//         "3": "coding"
+//     }
+// }
+
+
+
+
 export const login = async (req, res, next) => {
     try {
         const { email, password } = req.body
@@ -26,17 +43,8 @@ export const login = async (req, res, next) => {
     }
 }
 
-// {
-//     "name": "Krishna Kesarwani",
-//     "email": "kk321@gmail.com",
-//     "password": "kk",
-//     "yearOFstudy": "3",
-//     "foi": {
-//         "1":"mech",
-//         "2":"design",
-//         "3": "coding"
-//     }
-// }
+
+
 export const register = async (req, res) => {
     try {
         const { name, email, password, yearOFstudy, foi } = req.body
@@ -55,15 +63,8 @@ export const register = async (req, res) => {
     }
 }
 
-// export const getmyprofile = async (req, res) => {
-//     const { id } = req.params;
-//     const user = await User.findById(id);
 
-//     res.json({
-//         success: true,
-//         user,
-//     })
-// }
+
 
 export const getmyprofile = (req, res) => {
     res.status(200).json({
@@ -71,6 +72,9 @@ export const getmyprofile = (req, res) => {
         user: req.user,
     })
 }
+
+
+
 
 export const getAllUsers = async (req, res) => {
     try {
@@ -85,11 +89,11 @@ export const getAllUsers = async (req, res) => {
     }
 }
 
+
+
 export const logout = (req, res) => {
     res.status(200).cookie("token", "", {
         expires: new Date(Date.now()),
-        // sameSite: process.env.NODE_ENV === "Devlopment" ? "lax" : "none",
-        // secure: process.env.NODE_ENV === "Devlopment" ? false : true,
     })
         .json({
             success: true,
@@ -97,37 +101,32 @@ export const logout = (req, res) => {
         })
 }
 
-export const updatefoi = async (req, res) => {
-    const { email } = req.body
-    let user = await User.findOne({ email })
-    const stringArray = req.body.foi;
 
-    await user.updateOne({ $set: { foi: stringArray } })
 
-    res.json({
-        success: true,
-        message: 'Field of interests are updated successfully!'
-    });
+export const updateprofile = async (req, res, next) => {
+    try {
+        const { name, email, yearOFstudy, foi } = req.body
+        let user = await User.findOne({ email })
+        console.log(user)
 
-}
+        await User.updateMany({
+            $set: {
+                name: name,
+                yearOFstudy: yearOFstudy,
+                foi: foi,
+            }
+        })
 
-export const updateprofile = async (req, res) => {
-    const { name, email, yearOFstudy, foi } = req.body
-    let user = await User.findOne({ email })
-    console.log(user)
-
-    await User.updateMany({
-        $set: {
-            name: name,
-            yearOFstudy: yearOFstudy,
-            foi: foi,
-        }
-    })
-
-    res.json({
-        success: true,
-        message: 'Profile updated successfully!'
-    });
+        res.json({
+            success: true,
+            message: 'Profile updated successfully!'
+        });
+    } catch (error) {
+        next(error)
+    }
 
 }
+
+
+
 
