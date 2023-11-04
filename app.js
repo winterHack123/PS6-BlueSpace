@@ -25,8 +25,8 @@ app.use(cors({
 }))
 
 // Using routes
-app.use("/ipp/users", userRouter)
-app.use("/ipp/tasks", taskRouter)
+app.use("/ipp/v1/users", userRouter)
+app.use("/ipp/v1/tasks", taskRouter)
 
 
 app.get(('/'), (req, res) => {
