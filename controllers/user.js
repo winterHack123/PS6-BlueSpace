@@ -97,6 +97,37 @@ export const logout = (req, res) => {
         })
 }
 
-export const addnewfoi =(req,res)=>{
+export const updatefoi = async (req, res) => {
+    const { email } = req.body
+    let user = await User.findOne({ email })
+    const stringArray = req.body.foi;
+
+    await user.updateOne({ $set: { foi: stringArray } })
+
+    res.json({
+        success: true,
+        message: 'Field of interests are updated successfully!'
+    });
 
 }
+
+export const updateprofile = async (req, res) => {
+    const { name, email, yearOFstudy, foi } = req.body
+    let user = await User.findOne({ email })
+    console.log(user)
+
+    await User.updateMany({
+        $set: {
+            name: name,
+            yearOFstudy: yearOFstudy,
+            foi: foi,
+        }
+    })
+
+    res.json({
+        success: true,
+        message: 'Profile updated successfully!'
+    });
+
+}
+

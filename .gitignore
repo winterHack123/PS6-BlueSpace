@@ -1,3 +1,10 @@
 /node_modules
 
 /data/config.env
+
+/controllers/task.js
+
+/models/task.js
+
+/routes/task.js
+
