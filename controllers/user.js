@@ -26,8 +26,7 @@ import ErrorHandler from "../middlewares/error.js"
 export const login = async (req, res, next) => {
     try {
         const { email, password } = req.body
-        console.log(req.body)
-        // console.log(password)
+
         let user = await User.findOne({ email }).select("+password")
         if (!user) {
             return next(new ErrorHandler("Invalid Email or Password...", 404))
@@ -61,6 +60,10 @@ export const register = async (req, res, next) => {
         user = await User.create({ name, email, password: hashedPassword, yearOFstudy, foi })
 
         sendCookie(user, res, "Registered Successfully...", 201)
+        res.status(200).json({
+            success: true,
+            message: "User registered successfully..."
+        })
     } catch (error) {
         next(error)
     }
@@ -71,7 +74,7 @@ export const register = async (req, res, next) => {
 
 export const getmyprofile = async (req, res) => {
     let user = await User.findOne({ email: req.query.email })
-    res.render("profile.ejs", { name: user.name, email: user.email, yos: user.yearOFstudy });
+    res.render("profile.ejs", { name: user.name, email: user.email, yos: user.yearOFstudy, taginput: user.foi });
     // res.status(200).json({
     //     success: true,
     //     user,

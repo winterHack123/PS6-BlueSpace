@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>Sidebars · Bootstrap v5.3</title>
+    <title>Interview Practice Platform</title>
 
     <style>
         .bd-placeholder-img {
@@ -257,17 +257,7 @@
                                     <input type="email" class="form-control" id="inp2">
                                 </div>
 
-                                <div class="col-md-4">
-                                    <label for="state" class="form-label">Major</label>
-                                    <select class="form-select" id="inp3" required="">
-                                        <option value="">Choose...</option>
-                                        <option>CSE</option>
-                                        <option>ECE</option>
-                                        <option>EEE</option>
-                                        <option>CVE</option>
-                                        <option>MCE</option>
-                                    </select>
-                                </div>
+
                                 <div class="col-md-4">
                                     <label for="state" class="form-label">Year of Study</label>
                                     <select class="form-select" id="inp4" required="">
@@ -283,8 +273,7 @@
                                 </div>
                                 <div class="mb-2 cust-dp-1">
                                     <div class="mb-3">
-                                        <input type="text" class="form-control" id="tag-input"
-                                            placeholder="Enter a tag">
+                                        <input type="text" class="form-control" id="taginput" placeholder="Enter a tag">
                                     </div>
                                     <button onclick="addSpan()" class="imp-btn-1" id="inp5"><svg
                                             xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -314,12 +303,13 @@
             const inp3 = document.getElementById("inp3");
             const inp4 = document.getElementById("inp4");
             const inp5 = document.getElementById("inp5");
-            const tag_input = document.getElementById("tag-input")
+            const tag_input = document.getElementById("taginput")
             inp1.value = "<%- name %>"
             inp2.value = "<%- email %>"
-            inp3.value = "<%- yos %>";
-
-
+            inp4.value = "<%- yos %>";
+            // tag_input = "<%- taginput %>";
+            // console.log(tag_input.)
+            addSpanDB();
         }
         function sendData() {
             const inp1 = document.getElementById("inp1");
@@ -327,10 +317,10 @@
             console.log(inp1);
             console.log(inp1.value);
             const inp2 = document.getElementById("inp2");
-            const inp3 = document.getElementById("inp3");
+            // const inp3 = document.getElementById("inp3");
             const inp4 = document.getElementById("inp4");
             const inp5 = document.getElementById("inp5");
-            const tag_input = document.getElementById("tag-input")
+            const tag_input = document.getElementById("taginput")
             collectValues();
             let obj = {
                 uname: inp1.value,
@@ -356,7 +346,36 @@
                 });
         }
         let spanCounter = 0; // To maintain unique IDs for span elements
-        let tag_list = [];
+        function addSpanDB() {
+            const list_of_inp = "<%- taginput %>".split(",");
+            console.log(list_of_inp)
+            const spanContainer = document.getElementById('span-container');
+            for (let elt of list_of_inp) {
+                const newSpan = document.createElement('span');
+                console.log(newSpan)
+                const spanId = `span-${spanCounter}`;
+                newSpan.id = spanId;
+                newSpan.classList.add("badge", "d-flex", "p-2", "align-items-center", "text-primary-emphasis", "bg-primary-subtle", "border", "border-primary-subtle", "rounded-pill");
+                const newElement = document.createElement('span');
+                newElement.textContent = elt;
+                newElement.classList.add('px-1');
+                newSpan.appendChild(newElement);
+                const deleteButton = document.createElement('a');
+                deleteButton.innerHTML += "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x' viewBox='0 0 16 16'> <path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z' /></svg>";
+                deleteButton.href = "#";
+
+                deleteButton.onclick = function () {
+                    // Remove the span when the delete button is clicked
+                    newSpan.remove();
+                };
+
+                // Append the span and delete button to the container
+                newSpan.appendChild(deleteButton);
+                spanContainer.appendChild(newSpan);
+
+                spanCounter++;
+            }
+        }
         function addSpan() {
             const spanContainer = document.getElementById('span-container');
 
@@ -366,7 +385,7 @@
             newSpan.id = spanId;
             newSpan.classList.add("badge", "d-flex", "p-2", "align-items-center", "text-primary-emphasis", "bg-primary-subtle", "border", "border-primary-subtle", "rounded-pill");
             const newElement = document.createElement('span');
-            newElement.textContent = document.getElementById("tag-input").value;
+            newElement.textContent = document.getElementById("taginput").value;
             newElement.classList.add('px-1');
             newSpan.appendChild(newElement);
 
