@@ -22,6 +22,9 @@ app.get("/home", (req, res) => {
 app.get("/schedule", (req, res) => {
   res.render("scheduled.ejs",{});
 });
+app.get("/planned", (req, res) => {
+  res.render("planned.ejs",{});
+});
 app.post("/receive-object",(req,res)=>{
   console.log(req.body);
 });
