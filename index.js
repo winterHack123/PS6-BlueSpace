@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   res.render("index.ejs",{});
 });
 app.get("/profile", (req, res) => {
-  res.render("profile.ejs",{name:"Alex",email:"joy@123",yos:"1st Year",major:"CSE"});
+  res.render("profile.ejs",{name:"Alex",email:"joy@123",yos:"2nd Year",major:"CSE"});
 });
 app.get("/home", (req, res) => {
   res.render("bt.ejs",{fname:"Joyal",num:1});

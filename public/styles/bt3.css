@@ -17,6 +17,34 @@
 }
 
 .border-padding{
-    padding: 10px;
-    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #212529;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: 40px;
+}
+.cust-cnt{
+    text-align: center;
+}
+.flx-col{
+    display: flex;
+    flex-direction: column;
+}
+.ct-1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.gl{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.gl-flx-col{
+    display: flex;
+    flex-direction: column;
 }

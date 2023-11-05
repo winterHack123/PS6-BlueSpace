@@ -1,0 +1,10 @@
+.grid_bdy{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+}
+
+.flx_col{
+    display: flex;
+    flex-direction: column;
+}
